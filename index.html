@@ -6,46 +6,31 @@
         <meta charset="utf-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <link href="favicon.ico" rel="icon" type="image/x-icon">
-        <link rel="stylesheet" href="bootstrap.css">
         <script src="to-markdown.js"></script>
         <script src="clipboard2markdown.js"></script>
         <style>
-            h2 {
-                font-size: 22px;
-                font-style: italic;
-            }
             body {
-                background-attachment: fixed;
-                background-image: url('background.svg');
-                background-position: right 10% bottom 20%;
-                background-repeat: no-repeat;
-                background-size: 20em;
-                margin-bottom: 10vh;
-                margin-top: 10vh;
+                padding: 10em;
             }
             #pastebin {
-                opacity: 0.01;
-                width: 100%;
+                /* Has to visible, otherwise we 
+                   cannot paste into it */
                 height: 1px;
                 overflow: hidden;
             }
             #output {
-                border: none;
+                color: inherit;
                 background: transparent;
-                font-family: Consolas, "Liberation Mono", Courier, monospace;
-                font-size: 13px;
-                line-height: 19px;
-                min-height: 78vh;
-                overflow: auto;
-                padding: 6px 10px;
+                overflow-y: auto;
                 resize: none;
+                padding: 1em;
+                min-height: 50vh;
                 width: 100%;
             }
             @media (prefers-color-scheme: dark) {
-                body { 
-                    background-image: url('background-dark.svg');
-                    background-color: #222; 
+                body {  
                     color:white; 
+                    background-color: #222;
                 }
                 code {
                     color: #ff7a9c;
@@ -58,7 +43,6 @@
         </style>
     </head>
     <body>
-        <div class="container">
             <section id="info">
                 <h1>Paste to Markdown</h1>
                 <h2>Instructions</h2>
@@ -69,11 +53,9 @@
                     <li>The converted Markdown will appear!</li>
                 </ol>
                 <p>The conversion is carried out by <a href="https://github.com/domchristie/to-markdown">to-markdown</a>, a Markdown converter written in JavaScript and running locally in the browser.</p>
+                <p>This page is a modified version of Euan Goddard's <a href="https://github.com/euangoddard/clipboard2markdown">clipboard2markdown</a>.</p>
             </section>
             <div contenteditable="true" id="pastebin"></div>
-            <section class="hidden" id="wrapper">
-                <textarea id="output"></textarea>
-            </section>
-        </div>
+            <textarea id="output"></textarea>
     </body>
 </html>
