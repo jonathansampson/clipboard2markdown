@@ -19,8 +19,8 @@
         node.textContent
         && ( isBold(node) || isItalic(node) ),
       replacement: (text, node) => {
-        if ( isBold( node ) ) text = `__${text}__`;
-        if ( isItalic( node ) ) text = `*${text}*`;
+        if ( isBold( node ) ) text = `**${text}**`;
+        if ( isItalic( node ) ) text = `_${text}_`;
         return text;
       }
     },
