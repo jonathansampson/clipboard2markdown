@@ -60,6 +60,26 @@
         && node.getAttribute('href'),
       replacement: (text, node) => {
 
+        /**
+         * If #noAbsoluteBraveURLs is checked, replace absolute
+         * Brave URLs with relative URLs.
+         */
+        const noAbs = document.querySelector('#noAbsoluteBraveURLs');
+        if (noAbs.checked) {
+          let url = node.getAttribute('href');
+          /**
+           * Check if this is a Brave URL.
+           */
+          if (url.includes('brave.com')) {
+            /**
+             * Increment the number of replacements.
+             */
+            noAbs.parentElement.dataset.removed = parseInt(noAbs.parentElement.dataset.removed || 0) + 1;
+            url = url.replace(/https?:\/\/brave\.com\//, '/');
+            node.setAttribute('href', url);
+          }
+        }
+
         let replacement;
         let url = node.getAttribute('href');
         const lead = text.match(/^\s+/)?.[0] || [''];

@@ -27,6 +27,12 @@
                 min-height: 50vh;
                 width: 100%;
             }
+
+            li[data-removed]::after {
+                /** Show the removed value in parens after content */
+                content: " (" attr(data-removed) " removed)";
+            }
+            
             @media (prefers-color-scheme: dark) {
                 body {  
                     color:white; 
@@ -51,6 +57,7 @@
                     <li>Copy it to the clipboard (<code>Ctrl+C</code>, or <code>&#8984;+C</code> on Mac)</li>
                     <li>Paste it into this window (<code>Ctrl+V</code>, or <code>&#8984;+V</code> on Mac)</li>
                     <li>The converted Markdown will appear!</li>
+                    <li data-removed="0"><input type="checkbox" id="noAbsoluteBraveURLs" /> Remove absolute brave.com URL bases</li>
                 </ol>
                 <p>The conversion is carried out by <a href="https://github.com/domchristie/to-markdown">to-markdown</a>, a Markdown converter written in JavaScript and running locally in the browser.</p>
                 <p>This page is a modified version of Euan Goddard's <a href="https://github.com/euangoddard/clipboard2markdown">clipboard2markdown</a>.</p>
