@@ -19,9 +19,19 @@
         node.textContent
         && ( isBold(node) || isItalic(node) ),
       replacement: (text, node) => {
+
+        const lead = text.match(/^\s+/)?.[0] || [''];
+        const trail = text.match(/\s+$/)?.[0] || [''];
+
+        if ( lead || trail ) {
+          text = text.trim();
+        }
+
         if ( isBold( node ) ) text = `**${text}**`;
         if ( isItalic( node ) ) text = `_${text}_`;
-        return text;
+
+        return `${ lead }${ text }${ trail }`;
+
       }
     },
     {
