@@ -1,3 +1,7 @@
+Forked/Modified URL: https://jonathansampson.github.io/clipboard2markdown/
+
+----
+
 clipboard2markdown
 ==================
 
