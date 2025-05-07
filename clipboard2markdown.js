@@ -10,6 +10,10 @@
 
   const converters = [
     {
+      filter: node => !node.textContent.trim(),
+      replacement: () => '' // Ignore nodes with only whitespace
+    },
+    {
       filter: node => /^H[1-6]$/.test( node.tagName ),
       replacement: (text, node) =>
         `${ '#'.repeat( node.tagName[1] ) } ${text}\n\n`
