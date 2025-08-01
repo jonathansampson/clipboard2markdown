@@ -65,6 +65,14 @@
       replacement: (text, node) => {
 
         /**
+         * Automatically upgrade all http: instances to https:
+         */
+        if ( node.getAttribute("href").startsWith("http:") ) {
+          const href = node.getAttribute("href");
+          node.setAttribute("href", href.replace(/^http:/, 'https:'));
+        }
+
+        /**
          * If #noAbsoluteBraveURLs is checked, replace absolute
          * Brave URLs with relative URLs.
          */
