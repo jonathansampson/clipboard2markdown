@@ -92,6 +92,23 @@
           }
         }
 
+        /**
+         * Relative URLs should end with a forward slash.
+         */
+        if ( node.getAttribute('href').startsWith('/') ) {
+          const href = node.getAttribute('href');
+          if ( href.includes('?') ) { // Mindful of query strings
+            if ( !href.includes('/?' ) ) {
+              node.setAttribute('href', href.replace('?', '/?'));
+            }
+          } else if ( !href.endsWith('/') ) {
+            node.setAttribute('href', href + '/');
+          }
+        }
+
+        /**
+         * Fix up sytnax used, spacing, etc.
+         */
         let replacement;
         let url = node.getAttribute('href');
         const lead = text.match(/^\s+/)?.[0] || [''];
